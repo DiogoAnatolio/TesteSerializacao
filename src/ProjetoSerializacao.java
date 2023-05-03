@@ -30,17 +30,15 @@ public class ProjetoSerializacao {
         BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path3));
         BufferedReader buffReade = new BufferedReader(new FileReader(path));
         BufferedReader buffReade2 = new BufferedReader(new FileReader(path2));
-        String linha = "";
-        while (true) {
-            if(buffReade.readLine() != null || buffReade2.readLine() != null) {
-                linha = buffReade.readLine() + "" + buffReade2.readLine();
-                System.out.println(linha);
-                buffWrite.append(linha + "\n");
-            }else
-                break;
+
+        String nome, sobrenome;
+
+        while ((nome = buffReade.readLine()) != null && (sobrenome = buffReade2.readLine()) != null) {
+            buffWrite.write(nome + " " + sobrenome);
+            buffWrite.newLine();
         }
         buffReade.close();
-        buffWrite.close();
         buffReade2.close();
+        buffWrite.close();
     }
 }
